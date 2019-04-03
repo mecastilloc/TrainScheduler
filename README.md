@@ -32,6 +32,7 @@ moment logic completed, all functions working
 comiit 4:
 final css style, away time formated in hh:mm
 
-
+commit 5:
+validation form bug's fixed, new background, new schedule form implemented with modals
 
 
