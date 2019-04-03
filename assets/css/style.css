@@ -1,0 +1,66 @@
+html {
+    background-image: url("../images/bg.jpg");
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    color: rgb(255, 94, 0);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 940px;
+}
+
+.jumbotron {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+.card-header{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+th {
+    color: burlywood;
+}
+
+td {
+    color: sandybrown;
+}
+
+input[type="text"], textarea {
+    background-color: khaki;
+}
+
+input[type="text"]:focus, textarea {
+    background-color: greenyellow;
+}
+
+input[type="number"], textarea {
+    background-color: khaki;
+}
+
+input[type="number"]:focus, textarea {
+    background-color: greenyellow;
+}
+
+input[type="time"], textarea {
+    background-color: khaki;
+}
+
+input[type="time"]:focus, textarea {
+    background-color: greenyellow;
+}
