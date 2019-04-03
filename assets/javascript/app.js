@@ -9,7 +9,7 @@ var config = {
 
 var trainFirst;
 var away;
-
+var trainFrec;
 firebase.initializeApp(config);
 
 var dB = firebase.database();
@@ -17,13 +17,11 @@ var dB = firebase.database();
 $("#submitbtn").on("click", function(event) {
     event.preventDefault();
 
-// $("#submitbtn").click(function (event) {
-//     event.preventDefault();
     var trainName = $("#trainname").val().trim();
     var destination = $("#traindestiny").val().trim();
     trainFirst = $("#trainfirst").val().trim();
     console.log(trainFirst);
-    var trainFrec = $("#trainfrec").val().trim();
+    trainFrec = $("#trainfrec").val().trim();
 
     dB.ref().push({
         trainName: trainName,
@@ -44,29 +42,32 @@ dB.ref().on("child_added", function (snapshot) {
     var tdAway = $("<td>");
 
        // Assumptions
-       var tFrequency = 3;
+      
 
        // Time is 3:30 AM
-       var firstTime = "03:30";
+       
    
        // First Time (pushed back 1 year to make sure it comes before current time)
-       var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-       console.log(firstTimeConverted);
+       var sv = snapshot.val();
+       
+       var firstTimeConverted = moment(sv.trainFirst, "HH:mm").subtract(1, "years");
+       console.log("trainfirst" + sv.trainFirst)
+       console.log("firdt time"+ firstTimeConverted);
    
        // Current Time
        var currentTime = moment();
        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
    
        // Difference between the times
-       var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-       console.log("DIFFERENCE IN TIME: " + diffTime);
+       away = moment().diff(moment(firstTimeConverted), "minutes");
+       console.log("DIFFERENCE IN TIME: " + away);
    
        // Time apart (remainder)
-       var tRemainder = diffTime % tFrequency;
+       var tRemainder = away % sv.trainFrec;
        console.log(tRemainder);
    
        // Minute Until Train
-       var tMinutesTillTrain = tFrequency - tRemainder;
+       var tMinutesTillTrain = sv.trainFrec - tRemainder;
        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
    
        // Next Train
@@ -74,14 +75,14 @@ dB.ref().on("child_added", function (snapshot) {
        console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
     // Change the HTML to reflect
-    tdName.text(snapshot.val().trainName);
-    tdDestiny.text(snapshot.val().destination);
-    tdFrec.text(snapshot.val().trainFrec);
+    tdName.text(sv.trainName);
+    tdDestiny.text(sv.destination);
+    tdFrec.text(sv.trainFrec);
 
 
 
-    tdNext.text("prueba");
-    tdAway.text("prueba");
+    tdNext.text(moment(nextTrain).format("hh:mm"));
+    tdAway.text(tMinutesTillTrain);
 
     tr.append(tdName);
     tr.append(tdDestiny);

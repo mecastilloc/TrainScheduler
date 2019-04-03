@@ -11,4 +11,9 @@ Repo Created
 commit 2:
 Initial file structure, html template, firebase connection, firebase read/write data
 
+commit 3:
+moment logic completed, all functions working
+
+
+
 
