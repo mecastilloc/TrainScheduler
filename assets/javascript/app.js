@@ -93,7 +93,7 @@ dB.ref().on("child_added", function (snapshot) {
   tdName.text(sv.trainName);
   tdDestiny.text(sv.destination);
   //tdFrec.text(moment(parseInt(sv.trainFrec)).format("hh:mm"));
-  //tdFrec.text(sv.trainFrec);
+  tdFrec.text(sv.trainFrec);
   //tdFrec.text(moment(parseInt(sv.trainFrec)));
   console.log(typeof(parseInt(sv.trainFrec)));
   tdNext.text(moment(nextTrain).format("hh:mm"));

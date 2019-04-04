@@ -35,4 +35,7 @@ final css style, away time formated in hh:mm
 commit 5:
 validation form bug's fixed, new background, new schedule form implemented with modals
 
+commit 6:
+bug in Frecuency times detected fixed
+
 
